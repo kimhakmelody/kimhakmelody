@@ -1,0 +1,126 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system with Khmer font support */
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+
+    --primary: 210 100% 56%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 88%;
+    --secondary-foreground: 0 0% 10%;
+
+    --muted: 0 0% 94%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 210 100% 97%;
+    --accent-foreground: 0 0% 10%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 210 100% 56%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 10%;
+    --foreground: 0 0% 90%;
+
+    --card: 0 0% 15%;
+    --card-foreground: 0 0% 90%;
+
+    --popover: 0 0% 15%;
+    --popover-foreground: 0 0% 90%;
+
+    --primary: 210 100% 56%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 25%;
+    --secondary-foreground: 0 0% 90%;
+
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 64%;
+
+    --accent: 0 0% 15%;
+    --accent-foreground: 0 0% 90%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 90%;
+
+    --border: 0 0% 25%;
+    --input: 0 0% 25%;
+    --ring: 210 100% 56%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-kantumruy transition-colors duration-300;
+    font-feature-settings: "kern" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .gradient-bg {
+    background: linear-gradient(-45deg, #1e90ff, #00bfff, #87ceeb, #4169e1);
+    background-size: 400% 400%;
+    animation: gradient-shift 8s ease infinite;
+  }
+
+  .glass-effect {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .dark .glass-effect {
+    background: rgba(38, 38, 38, 0.8);
+    border: 1px solid rgba(64, 64, 64, 0.3);
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, #1e90ff, #00bfff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  .dark .hover-lift:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  }
+}

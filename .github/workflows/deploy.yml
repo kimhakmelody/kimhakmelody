@@ -20,15 +20,15 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20  # ត្រឡប់មកប្រើ ២០ វិញដើម្បីឱ្យស៊ីជាមួយកូដ Lovable
+          node-version: 24
 
       - name: Install dependencies
-        run: npm install --legacy-peer-deps
+        run: |
+          npm install --legacy-peer-deps
+          npm install -g typescript
 
       - name: Build
         run: npm run build
-        env:
-          CI: false  # បញ្ជាឱ្យវាបន្ត Build ទោះមាន Warning ក៏ដោយ
 
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v3

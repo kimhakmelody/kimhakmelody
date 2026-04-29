@@ -22,8 +22,7 @@ jobs:
         with:
           node-version: 20
 
-      - name: Clean Install
-        # ប្រើ --legacy-peer-deps ដើម្បីកុំឱ្យវាទាស់ជាមួយបណ្ណាល័យដែលបាត់
+      - name: Install dependencies
         run: npm install --legacy-peer-deps
 
       - name: Build

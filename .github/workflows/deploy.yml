@@ -23,7 +23,7 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        run: npm install --force
+        run: npm ci --force
 
       - name: Build
         run: npm run build

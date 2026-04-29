@@ -20,15 +20,17 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: 20
 
-      - name: Install dependencies
+      - name: Clean and Install dependencies
         run: |
+          rm -rf node_modules package-lock.json
           npm install --legacy-peer-deps
-          npm install -g typescript
 
       - name: Build
         run: npm run build
+        env:
+          CI: false
 
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v3

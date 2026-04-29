@@ -22,13 +22,12 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install dependencies
-        # ប្រើ --legacy-peer-deps និង --no-package-lock ដើម្បីកុំឱ្យវាជាន់គ្នា
-        run: npm install --legacy-peer-deps --no-package-lock
+      - name: Clean Install
+        # ប្រើ --legacy-peer-deps ដើម្បីកុំឱ្យវាទាស់ជាមួយបណ្ណាល័យដែលបាត់
+        run: npm install --legacy-peer-deps
 
       - name: Build
-        # ថែម CI=false ដើម្បីកុំឱ្យវា Error ពេលមាន Warning
-        run: CI=false npm run build
+        run: npm run build
 
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v3
@@ -41,6 +40,6 @@ jobs:
     environment:
       name: github-pages
     steps:
-      - name: Deploy to GitHub Pages
+      - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4

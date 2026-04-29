@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import Index from "./pages/index"; // ប្រើ i តូច បើឈ្មោះ file គឺ index.tsx
+import Index from "./pages/index.tsx"; // បន្ថែម .tsx នៅខាងចុងឱ្យច្បាស់
 
 const App = () => (
   <Routes>

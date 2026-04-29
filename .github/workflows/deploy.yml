@@ -13,8 +13,6 @@ permissions:
 jobs:
   build_site:
     runs-on: ubuntu-latest
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -22,7 +20,7 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: 24  # ប្តូរមកប្រើ Version ២៤ តាមការណែនាំថ្មីរបស់ GitHub
 
       - name: Install dependencies
         run: npm install --legacy-peer-deps

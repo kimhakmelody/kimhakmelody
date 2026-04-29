@@ -4,6 +4,7 @@ import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: "/kimhakmelody/", // បន្ថែមបន្ទាត់នេះ ដើម្បីឱ្យដើរលើ GitHub Pages
   server: {
     host: "0.0.0.0",
     port: 8080,

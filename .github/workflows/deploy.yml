@@ -20,8 +20,7 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 24  # ប្តូរមកប្រើ Version ២៤ តាមការណែនាំថ្មីរបស់ GitHub
-
+          node-version: 24
       - name: Install dependencies
         run: npm install --legacy-peer-deps
 

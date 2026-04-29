@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-      branches: "main"
+      branches: ["main"]
 
       permissions:
         contents: read
@@ -19,7 +19,7 @@ on:
                                           - name: Install Node.js
                                                   uses: actions/setup-node@v4
                                                           with:
-                                                                    node-version: 20  # ត្រូវប្រាកដថាអក្សរតូចធំត្រឹមត្រូវ
+                                                                    node-version: 20
 
                                                                           - name: Install dependencies
                                                                                   run: npm install
@@ -37,9 +37,8 @@ on:
                                                                                                                                           runs-on: ubuntu-latest
                                                                                                                                               environment:
                                                                                                                                                     name: github-pages
-                                                                                                                                                          url: ${{ steps.deployment.outputs.page_url }}
-                                                                                                                                                              steps:
-                                                                                                                                                                    - name: Deploy
-                                                                                                                                                                            id: deployment
-                                                                                                                                                                                    uses: actions/deploy-pages@v4
-                                                                                                                                                                                    
+                                                                                                                                                        steps:
+                                                                                                                                                              - name: Deploy to GitHub Pages
+                                                                                                                                                                      id: deployment
+                                                                                                                                                                              uses: actions/deploy-pages@v4
+                                                                                                                                                                              

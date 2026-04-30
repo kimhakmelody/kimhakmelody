@@ -20,21 +20,21 @@ const Hero = () => {
       btn2: 'Download CV'
     },
     zh: {
-      name: 'Heng Kim Hak',
+      name: '恒 金鹤',
       title: '网页开发人员与程序员',
       tagline: '用代码构建未来，创造创新的解决方案 最高安全级别',
       btn1: '了解更多',
       btn2: '下载简历'
     },
     ko: {
-      name: 'Heng Kim Hak',
+      name: '헹 김학',
       title: '웹 개발자 및 프로그래머',
       tagline: '코드로 미래를 구축하고 혁신적인 솔루션을 창출합니다 그리고 최고의 안전성',
       btn1: '더 알아보기',
       btn2: '이력서 다운로드'
     },
     ja: {
-      name: 'Heng Kim Hak',
+      name: 'ヘン・キムハク',
       title: 'ウェブ開発者兼プログラマー',
       tagline: 'コードで未来を築き、革新的なソリューションを創造します そして最高の安全性',
       btn1: 'もっと詳しく',

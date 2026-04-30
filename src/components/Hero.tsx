@@ -31,7 +31,6 @@ const Hero = () => {
     }
   };
 
-  // កំណត់ Content ផ្ទាល់នៅទីនេះតែម្តង (មិនបាច់ហៅពី Context នាំ Error)
   const currentContent = {
     name: 'គឹម ហាក់',
     title: 'Web Developer & Programmer',
@@ -51,9 +50,16 @@ const Hero = () => {
 
       <div ref={heroRef} className="container mx-auto px-4 text-center z-10">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-gradient break-words">
+          {/* បន្ថែមរូបទង់ជាតិនៅជិតឈ្មោះ */}
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-gradient break-words flex items-center justify-center gap-3">
             {currentContent.name}
+            <img 
+              src="https://flagcdn.com/kh.svg" 
+              alt="Cambodia Flag" 
+              className="w-10 h-auto rounded-sm shadow-md" 
+            />
           </h1>
+          
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold mb-8 text-foreground/90 break-words">
             {currentContent.title}
           </h2>

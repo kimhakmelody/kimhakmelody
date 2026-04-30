@@ -1,87 +1,63 @@
-import { cn } from "../lib/utils";
-import { useEffect, useRef } from 'react';
+import { useTheme } from '../contexts/ThemeContext';
 import { Button } from './ui/button';
 
 const Hero = () => {
-  const heroRef = useRef<HTMLDivElement>(null);
+  const { language } = useTheme();
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-fade-in');
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    if (heroRef.current) {
-      observer.observe(heroRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  const scrollToAbout = () => {
-    const aboutSection = document.querySelector('#about');
-    if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: 'smooth' });
+  const content = {
+    km: {
+      name: 'ហ៊េង គឹមហាក់',
+      title: 'អ្នកអភិវឌ្ឍន៍គេហទំព័រ & អ្នកសរសេរកម្មវិធី',
+      tagline: 'កសាងអនាគតជាមួយកូដ និងបង្កើតដំណោះស្រាយប្រកបដោយភាពច្នៃប្រឌិត',
+      btn1: 'ស្វែងយល់បន្ថែម',
+      btn2: 'ទាញយក CV'
+    },
+    en: {
+      name: 'Heng Kim Hak',
+      title: 'Web Developer & Programmer',
+      tagline: 'Building the future with code and creating innovative solutions',
+      btn1: 'Learn More',
+      btn2: 'Download CV'
+    },
+    zh: {
+      name: 'Heng Kim Hak',
+      title: '网页开发人员与程序员',
+      tagline: '用代码构建未来，创造创新的解决方案',
+      btn1: '了解更多',
+      btn2: '下载简历'
+    },
+    ko: {
+      name: 'Heng Kim Hak',
+      title: '웹 개발자 및 프로그래머',
+      tagline: '코드로 미래를 구축하고 혁신적인 솔루션을 창출합니다',
+      btn1: '더 알아보기',
+      btn2: '이력서 다운로드'
+    },
+    ja: {
+      name: 'Heng Kim Hak',
+      title: 'ウェブ開発者兼プログラマー',
+      tagline: 'コードで未来を築き、革新的なソリューションを創造します',
+      btn1: 'もっと詳しく',
+      btn2: '履歴書をダウンロード'
     }
   };
 
-  const currentContent = {
-    name: 'គឹម ហាក់',
-    title: 'Web Developer & Programmer',
-    tagline: 'Building the future with code and creating innovative solutions',
-    learnMore: 'ស្វែងយល់បន្ថែម',
-    downloadCV: 'Download Resume'
-  };
+  const cur = content[language] || content.en;
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      <div className="absolute inset-0 gradient-bg opacity-10"></div>
-
-      {/* Floating Elements */}
-      <div className="absolute top-20 left-10 w-20 h-20 bg-primary/20 rounded-full animate-float"></div>
-      <div className="absolute bottom-20 right-10 w-32 h-32 bg-accent/30 rounded-full animate-float" style={{animationDelay: '1s'}}></div>
-      <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-secondary/40 rounded-full animate-float" style={{animationDelay: '2s'}}></div>
-
-      <div ref={heroRef} className="container mx-auto px-4 text-center z-10">
-        <div className="max-w-4xl mx-auto">
-          {/* បន្ថែមរូបទង់ជាតិនៅជិតឈ្មោះ */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-gradient break-words flex items-center justify-center gap-3">
-            {currentContent.name}
-            <img 
-              src="https://flagcdn.com/kh.svg" 
-              alt="Cambodia Flag" 
-              className="w-10 h-auto rounded-sm shadow-md" 
-            />
-          </h1>
-          
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold mb-8 text-foreground/90 break-words">
-            {currentContent.title}
-          </h2>
-          <p className="text-lg sm:text-xl md:text-2xl mb-12 text-muted-foreground max-w-2xl mx-auto leading-relaxed break-words">
-            {currentContent.tagline}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              onClick={scrollToAbout}
-              size="lg"
-              className="bg-primary hover:bg-primary/90 text-white px-8 py-4 text-lg font-semibold hover-lift"
-            >
-              {currentContent.learnMore}
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="border-primary text-primary hover:bg-primary hover:text-white px-8 py-4 text-lg font-semibold hover-lift"
-            >
-              {currentContent.downloadCV}
-            </Button>
-          </div>
+      <div className="container mx-auto px-4 text-center z-10">
+        <h1 className="text-4xl md:text-7xl font-bold mb-6 text-gradient flex items-center justify-center gap-4">
+          {cur.name}
+          <img src="https://flagcdn.com/kh.svg" className="w-10 h-auto rounded-sm shadow-md" alt="KH" />
+        </h1>
+        <h2 className="text-xl md:text-3xl font-semibold mb-8 text-foreground/90">{cur.title}</h2>
+        <p className="text-lg md:text-xl mb-12 text-muted-foreground max-w-2xl mx-auto">{cur.tagline}</p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button size="lg" onClick={() => document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })}>
+            {cur.btn1}
+          </Button>
+          <Button size="lg" variant="outline">{cur.btn2}</Button>
         </div>
       </div>
     </section>

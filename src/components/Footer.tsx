@@ -15,10 +15,10 @@ const Footer = () => {
                   alt="Cambodia Flag" 
                   className="w-5 h-auto inline-block rounded-sm shadow-sm"
                   style={{ position: 'relative', top: '-1px' }} // តម្រង់ឱ្យស្មើអក្សរ
-                /> រក្សាសិទ្ធិ © {currentYear} ដោយ
+                /> រក្សាសិទ្ធិ © {currentYear} ដោយ 
                 {/* ត្រង់នេះ៖ ប្រើ <img> ដើម្បីបង្ហាញទង់ជាតិឱ្យចេញជារូប */}
                 
-                គឹម ហាក់ រក្សាសិទ្ធិគ្រប់យ៉ាង។
+                 គឹម ហាក់ ។ រក្សាសិទ្ធិគ្រប់យ៉ាង។
               </p>
             </div>
 

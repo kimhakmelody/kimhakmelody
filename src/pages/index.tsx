@@ -15,8 +15,9 @@ const Index = () => {
     setMounted(true);
   }, []);
 
+  // បើមិនទាន់ Render ជាប់ទេ ឱ្យវាបង្ហាញអក្សរ Loading សិនដើម្បីដឹងថា App ដើរ
   if (!mounted) {
-    return <div style={{ background: '#000', color: '#fff' }}>Loading...</div>;
+    return <div className="flex h-screen items-center justify-center bg-black text-white">Loading Portfolio...</div>;
   }
 
   return (

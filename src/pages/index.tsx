@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+// ត្រូវប្រាកដថាអក្សរផ្ដើមជាអក្សរធំ ឱ្យដូចឈ្មោះ File ពិតប្រាកដក្នុង Folder components
 import Navigation from '../components/Navigation';
 import Hero from '../components/Hero';
 import About from '../components/About';
@@ -7,7 +8,7 @@ import Projects from '../components/Projects';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import BackToTop from '../components/BackToTop';
-// លុប ThemeProvider ចេញពីទីនេះ បើមានដាក់ក្នុង main.tsx រួចហើយ
+// បើអ្នកបានដាក់ ThemeProvider ក្នុង main.tsx ហើយ មិនបាច់ដាក់នៅទីនេះទៀតទេ
 
 const Index = () => {
   const [mounted, setMounted] = useState(false);
@@ -16,9 +17,8 @@ const Index = () => {
     setMounted(true);
   }, []);
 
-  // បើមិនទាន់ mounted ទេ ឱ្យវាចេញ Loading សិន ចៀសវាងផ្ទាំងសស្លែតរកមុខសញ្ញាមិនឃើញ
   if (!mounted) {
-    return <div style={{ background: '#000', color: '#fff', height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Loading...</div>;
+    return null;
   }
 
   return (

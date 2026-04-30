@@ -1,102 +1,32 @@
-import { useEffect, useRef } from 'react';
-import { Card } from './ui/card';
+import { useTheme } from '../contexts/ThemeContext';
 
 const About = () => {
-  const aboutRef = useRef<HTMLDivElement>(null);
+  const { language } = useTheme();
 
-  // បង្កើត Content ផ្ទាល់នៅទីនេះ (មិនបាច់ហៅ language ពី useTheme)
-  const currentContent = {
-    title: 'អំពីខ្ញុំ (About Me)',
-    bio1: 'ជំរាបសួរ! ខ្ញុំ គឹម ហាក់ ជាអ្នកអភិវឌ្ឍន៍កម្មវិធីដែលចូលចិត្តបង្កើតដំណោះស្រាយប្រកបដោយភាពច្នៃប្រឌិត។ ខ្ញុំមានបទពិសោធន៍ជាង ៥ ឆ្នាំក្នុងការអភិវឌ្ឍន៍គេហទំព័រ និងការរចនាក្រាហ្វិក។',
-    bio2: 'ខ្ញុំឯកទេសក្នុងការប្រើប្រាស់បច្ចេកវិទ្យាទំនើបដូចជា React, HTML/CSS, JavaScript និងកម្មវិធីរចនាក្រាហ្វិកដូចជា Photoshop និង CorelDRAW ដើម្បីបង្កើតកម្មវិធីដែលមានប្រសិទ្ធភាព និងការរចនាដ៏ស្រស់ស្អាត។',
-    bio3: 'គោលដៅរបស់ខ្ញុំគឺបន្តរៀនសូត្រ និងអភិវឌ្ឍជំនាញថ្មីៗ ដើម្បីជួយដោះស្រាយបញ្ហាស្មុគស្មាញតាមរយៈបច្ចេកវិទ្យា និងការរចនាប្រកបដោយភាពច្នៃប្រឌិត។',
-    experience: 'ឆ្នាំបទពិសោធន៍',
-    experienceDesc: 'អភិវឌ្ឍន៍កម្មវិធី',
-    projects: 'គម្រោងបានបញ្ចប់',
-    projectsDesc: 'គេហទំព័រ និងកម្មវិធី',
-    clients: 'អតិថិជនពេញចិត្ត',
-    clientsDesc: 'គម្រោងជោគជ័យ'
+  const content = {
+    km: { title: 'អំពីខ្ញុំ', desc: 'ខ្ញុំគឺជាអ្នកអភិវឌ្ឍន៍ Full-stack ដែលមានចំណូលចិត្តក្នុងការបង្កើតគេហទំព័រដែលមានប្រសិទ្ធភាព និងបទពិសោធន៍អ្នកប្រើប្រាស់ដ៏ល្អបំផុត។', exp: 'បទពិសោធន៍', project: 'គម្រោងបញ្ចប់' },
+    en: { title: 'About Me', desc: 'I am a Full-stack developer with a passion for building efficient web applications and great user experiences.', exp: 'Experience', project: 'Projects Done' },
+    zh: { title: '关于我', desc: '我是一名全栈开发人员，热衷于构建高效的 Web 应用程序和出色的用户体验。', exp: '经验', project: '完成项目' },
+    ko: { title: '자기소개', desc: '저는 효율적인 웹 애플리케이션과 훌륭한 사용자 경험을 구축하는 데 열정을 가진 풀스택 개발자입니다.', exp: '경력', project: '완료된 프로젝트' },
+    ja: { title: '私について', desc: '私は、効率的なウェブアプリケーションと優れたユーザーエクスペリエンスの構築に熱心なフルスタック開発者です。', exp: '経験', project: '完了したプロジェクト' }
   };
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-slide-in');
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    if (aboutRef.current) {
-      observer.observe(aboutRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
+  const cur = content[language] || content.en;
 
   return (
-    <section id="about" className="py-20 bg-muted/30">
+    <section id="about" className="py-20">
       <div className="container mx-auto px-4">
-        <div ref={aboutRef} className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient">
-              {currentContent.title}
-            </h2>
-            <div className="w-24 h-1 bg-primary mx-auto"></div>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <p className="text-lg leading-relaxed text-muted-foreground">
-                {currentContent.bio1}
-              </p>
-              <p className="text-lg leading-relaxed text-muted-foreground">
-                {currentContent.bio2}
-              </p>
-              <p className="text-lg leading-relaxed text-muted-foreground">
-                {currentContent.bio3}
-              </p>
+        <h2 className="text-3xl md:text-5xl font-bold text-center mb-10 text-gradient">{cur.title}</h2>
+        <div className="max-w-3xl mx-auto text-center">
+          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-8">{cur.desc}</p>
+          <div className="grid grid-cols-2 gap-8">
+            <div className="p-6 bg-card rounded-lg shadow-sm">
+              <h3 className="text-3xl font-bold text-primary">2+</h3>
+              <p className="text-muted-foreground">{cur.exp}</p>
             </div>
-
-            <div className="space-y-6">
-              <Card className="p-6 hover-lift">
-                <div className="flex items-center space-x-4 mb-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                    <span className="text-primary font-bold text-xl">៥+</span>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg">{currentContent.experience}</h3>
-                    <p className="text-muted-foreground">{currentContent.experienceDesc}</p>
-                  </div>
-                </div>
-              </Card>
-
-              <Card className="p-6 hover-lift">
-                <div className="flex items-center space-x-4 mb-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                    <span className="text-primary font-bold text-xl">៥០+</span>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg">{currentContent.projects}</h3>
-                    <p className="text-muted-foreground">{currentContent.projectsDesc}</p>
-                  </div>
-                </div>
-              </Card>
-
-              <Card className="p-6 hover-lift">
-                <div className="flex items-center space-x-4 mb-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                    <span className="text-primary font-bold text-xl">២០+</span>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg">{currentContent.clients}</h3>
-                    <p className="text-muted-foreground">{currentContent.clientsDesc}</p>
-                  </div>
-                </div>
-              </Card>
+            <div className="p-6 bg-card rounded-lg shadow-sm">
+              <h3 className="text-3xl font-bold text-primary">20+</h3>
+              <p className="text-muted-foreground">{cur.project}</p>
             </div>
           </div>
         </div>

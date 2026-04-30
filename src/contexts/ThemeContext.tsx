@@ -1,11 +1,11 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
-type Theme = 'light' | 'dark';
+type Theme = 'light' | 'dark' | 'auto';
 type Language = 'km' | 'en' | 'zh' | 'ko' | 'ja';
 
 interface ThemeContextType {
   theme: Theme;
-  toggleTheme: () => void;
+  setTheme: (theme: Theme) => void;
   language: Language;
   setLanguage: (lang: Language) => void;
 }
@@ -13,10 +13,9 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  const [theme, setTheme] = useState<Theme>('light');
+  const [theme, setTheme] = useState<Theme>('auto');
   const [language, setLanguage] = useState<Language>('km');
 
-  // រក្សាទុកការកំណត់ក្នុង Browser កុំឱ្យ Refresh ទៅបាត់វិញ
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme') as Theme;
     const savedLang = localStorage.getItem('language') as Language;
@@ -25,18 +24,39 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   useEffect(() => {
-    document.documentElement.classList.toggle('dark', theme === 'dark');
+    const applyTheme = () => {
+      const root = window.document.documentElement;
+      let targetTheme = theme;
+
+      if (theme === 'auto') {
+        const hour = new Date().getHours();
+        // បើម៉ោងចន្លោះពី 6 ព្រឹក ដល់ 6 ល្ងាច ឱ្យចេញ Light Mode
+        targetTheme = (hour >= 6 && hour < 18) ? 'light' : 'dark';
+      }
+
+      root.classList.remove('light', 'dark');
+      root.classList.add(targetTheme);
+      // បន្ថែមពណ៌ Background ឱ្យត្រូវតាម Mode ការពារវាសស្លែត
+      root.style.colorScheme = targetTheme;
+    };
+
+    applyTheme();
     localStorage.setItem('theme', theme);
+
+    // ប្រសិនបើជ្រើសរើស Auto ឱ្យវាឆែកម៉ោងរៀងរាល់ ១ នាទីម្តង
+    const interval = setInterval(() => {
+      if (theme === 'auto') applyTheme();
+    }, 60000);
+
+    return () => clearInterval(interval);
   }, [theme]);
 
   useEffect(() => {
     localStorage.setItem('language', language);
   }, [language]);
 
-  const toggleTheme = () => setTheme(prev => prev === 'light' ? 'dark' : 'base');
-
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme, language, setLanguage }}>
+    <ThemeContext.Provider value={{ theme, setTheme, language, setLanguage }}>
       {children}
     </ThemeContext.Provider>
   );

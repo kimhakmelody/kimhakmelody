@@ -1,14 +1,12 @@
 import { cn } from "../lib/utils";
 import { useState, useEffect } from 'react';
-import { Moon, Sun, Menu, X } from 'lucide-react'; // ដក Globe និង Clock ចេញសិន
+import { Moon, Sun, Menu, X } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 import { Button } from './ui/button';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  
-  // កែត្រង់នេះ៖ យកតែ theme និង toggleTheme ដែលយើងមានពិតប្រាកដក្នុង Context
   const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
@@ -41,7 +39,16 @@ const Navigation = () => {
     }`}>
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <div className="text-2xl font-bold text-gradient">Kim Hak</div>
+          
+          {/* Logo ជាមួយទង់ជាតិកម្ពុជា */}
+          <div className="flex items-center gap-2 text-2xl font-bold text-gradient cursor-pointer" onClick={() => scrollToSection('#home')}>
+            Kim Hak
+            <img 
+              src="https://flagcdn.com/kh.svg" 
+              alt="KH Flag" 
+              className="w-7 h-auto rounded-sm shadow-sm"
+            />
+          </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
@@ -86,12 +93,12 @@ const Navigation = () => {
         </div>
 
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 py-4 glass-effect rounded-lg">
+          <div className="md:hidden mt-4 py-4 glass-effect rounded-lg animate-in fade-in zoom-in duration-300">
             {navLinks.map((link) => (
               <button
                 key={link.href}
                 onClick={() => scrollToSection(link.href)}
-                className="block w-full text-left px-4 py-2 text-foreground hover:text-primary hover:bg-accent"
+                className="block w-full text-left px-6 py-3 text-foreground hover:text-primary hover:bg-accent transition-colors"
               >
                 {link.label}
               </button>

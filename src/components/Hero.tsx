@@ -1,12 +1,9 @@
-
 import { cn } from "../lib/utils";
 import { useEffect, useRef } from 'react';
-import { useTheme } from '../contexts/ThemeContext';
 import { Button } from './ui/button';
 
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
-  const { language } = useTheme();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -34,30 +31,19 @@ const Hero = () => {
     }
   };
 
-  const content = {
-    km: {
-      name: 'គឹម ហាក់',
-      title: 'អ្នកអភិវឌ្ឍន៍កម្មវិធីគេហទំព័រ',
-      tagline: 'បង្កើតអនាគតជាមួយកូដ និងបង្កើតដំណោះស្រាយប្រកបដោយភាពច្នៃប្រឌិត',
-      learnMore: 'ស្វែងយល់បន្ថែម',
-      downloadCV: 'ទាញយកប្រវត្តិរូប'
-    },
-    en: {
-      name: 'Kim Hak',
-      title: 'Web Developer & Programmer',
-      tagline: 'Building the future with code and creating innovative solutions',
-      learnMore: 'Learn More',
-      downloadCV: 'Download Resume'
-    }
+  // កំណត់ Content ផ្ទាល់នៅទីនេះតែម្តង (មិនបាច់ហៅពី Context នាំ Error)
+  const currentContent = {
+    name: 'គឹម ហាក់',
+    title: 'Web Developer & Programmer',
+    tagline: 'Building the future with code and creating innovative solutions',
+    learnMore: 'ស្វែងយល់បន្ថែម',
+    downloadCV: 'Download Resume'
   };
-
-  const currentContent = content[language];
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Animated Background */}
       <div className="absolute inset-0 gradient-bg opacity-10"></div>
-      
+
       {/* Floating Elements */}
       <div className="absolute top-20 left-10 w-20 h-20 bg-primary/20 rounded-full animate-float"></div>
       <div className="absolute bottom-20 right-10 w-32 h-32 bg-accent/30 rounded-full animate-float" style={{animationDelay: '1s'}}></div>

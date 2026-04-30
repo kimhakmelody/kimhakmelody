@@ -1,4 +1,5 @@
 
+import { cn } from "../lib/utils";
 import { useState, useEffect } from 'react';
 import { Moon, Sun, Menu, X, Globe, Clock } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';

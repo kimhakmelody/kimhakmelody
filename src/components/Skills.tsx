@@ -1,56 +1,54 @@
-
 import { useEffect, useRef } from 'react';
-import { useTheme } from '../contexts/ThemeContext';
 import { Card } from './ui/card';
 import { Progress } from './ui/progress';
+// នាំចូល Icons ស្អាតៗ
+import { 
+  Palette, 
+  PenTool, 
+  Globe, 
+  Code2, 
+  Atom, 
+  FileText, 
+  FileSpreadsheet, 
+  Presentation, 
+  Video, 
+  Terminal 
+} from 'lucide-react';
 
 const Skills = () => {
   const skillsRef = useRef<HTMLDivElement>(null);
-  const { language } = useTheme();
 
+  // កំណត់ Skill ជាមួយ Icon ឱ្យត្រូវតាមមុខជំនាញ
   const skills = [
-    { name: 'Photoshop', level: 95, icon: '🎨' },
-    { name: 'CorelDRAW', level: 88, icon: '🖌️' },
-    { name: 'HTML/CSS', level: 92, icon: '🌐' },
-    { name: 'JavaScript', level: 85, icon: '💛' },
-    { name: 'React', level: 80, icon: '⚛️' },
-    { name: 'Microsoft Word', level: 90, icon: '📝' },
-    { name: 'Microsoft Excel', level: 85, icon: '📊' },
-    { name: 'PowerPoint', level: 88, icon: '📋' },
-    { name: 'Video Director', level: 75, icon: '🎬' },
-    { name: 'Kali Linux', level: 40, icon: '🐧' },
+    { name: 'Photoshop', level: 95, icon: <Palette className="w-6 h-6 text-blue-500" /> },
+    { name: 'CorelDRAW', level: 88, icon: <PenTool className="w-6 h-6 text-orange-500" /> },
+    { name: 'HTML/CSS', level: 92, icon: <Globe className="w-6 h-6 text-orange-600" /> },
+    { name: 'JavaScript', level: 85, icon: <Code2 className="w-6 h-6 text-yellow-500" /> },
+    { name: 'React', level: 80, icon: <Atom className="w-6 h-6 text-cyan-400 animate-spin-slow" /> },
+    { name: 'Microsoft Word', level: 90, icon: <FileText className="w-6 h-6 text-blue-700" /> },
+    { name: 'Microsoft Excel', level: 85, icon: <FileSpreadsheet className="w-6 h-6 text-green-600" /> },
+    { name: 'PowerPoint', level: 88, icon: <Presentation className="w-6 h-6 text-orange-700" /> },
+    { name: 'Video Director', level: 75, icon: <Video className="w-6 h-6 text-red-500" /> },
+    { name: 'Kali Linux', level: 40, icon: <Terminal className="w-6 h-6 text-gray-400" /> },
   ];
 
   const categories = [
     {
-      title: language === 'km' ? 'អភិវឌ្ឍន៍ផ្នែកមុខ' : 'Frontend Development',
-      description: language === 'km' ? 'អភិវឌ្ឍន៍គេហទំព័រដែលមានភាពឆ្លើយតប និងទាក់ទាញ' : 'Building responsive and engaging web interfaces',
-      techs: ['HTML/CSS', 'JavaScript', 'React', 'Tailwind CSS']
+      title: 'អភិវឌ្ឍន៍ផ្នែកមុខ (Frontend)',
+      description: 'អភិវឌ្ឍន៍គេហទំព័រដែលមានភាពឆ្លើយតប និងទាក់ទាញ',
+      techs: ['HTML/CSS', 'JavaScript', 'React', 'Tailwind']
     },
     {
-      title: language === 'km' ? 'រចនាក្រាហ្វិក' : 'Graphic Design',
-      description: language === 'km' ? 'បង្កើតការរចនាដ៏ស្រស់ស្អាត និងប្រកបដោយវិជ្ជាជីវៈ' : 'Creating beautiful and professional visual designs',
-      techs: ['Photoshop', 'CorelDRAW', 'UI/UX Design']
+      title: 'រចនាក្រាហ្វិក (Graphic Design)',
+      description: 'បង្កើតការរចនាដ៏ស្រស់ស្អាត និងប្រកបដោយវិជ្ជាជីវៈ',
+      techs: ['Photoshop', 'CorelDRAW', 'UI/UX']
     },
     {
-      title: language === 'km' ? 'ការិយាល័យ និងប្រព័ន្ធ' : 'Office & Systems',
-      description: language === 'km' ? 'ជំនាញក្នុងការប្រើប្រាស់កម្មវិធីការិយាល័យ និងប្រព័ន្ធ' : 'Proficiency in office applications and system administration',
-      techs: ['Microsoft Office', 'Video Editing', 'Linux Systems']
+      title: 'ការិយាល័យ និងប្រព័ន្ធ (Office)',
+      description: 'ជំនាញក្នុងការប្រើប្រាស់កម្មវិធីការិយាល័យ និងប្រព័ន្ធ',
+      techs: ['MS Office', 'Video Editing', 'Linux']
     }
   ];
-
-  const content = {
-    km: {
-      title: 'ជំនាញរបស់ខ្ញុំ',
-      subtitle: 'បច្ចេកវិទ្យា និងជំនាញដែលខ្ញុំប្រើប្រាស់ដើម្បីបង្កើតដំណោះស្រាយឌីជីថល'
-    },
-    en: {
-      title: 'My Skills',
-      subtitle: 'Technologies and skills I use to create digital solutions'
-    }
-  };
-
-  const currentContent = content[language];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -77,25 +75,25 @@ const Skills = () => {
         <div ref={skillsRef} className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient">
-              {currentContent.title}
+              ជំនាញរបស់ខ្ញុំ
             </h2>
             <div className="w-24 h-1 bg-primary mx-auto mb-6"></div>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              {currentContent.subtitle}
+              បច្ចេកវិទ្យា និងជំនាញដែលខ្ញុំប្រើប្រាស់ដើម្បីបង្កើតដំណោះស្រាយឌីជីថល
             </p>
           </div>
 
           {/* Skill Categories */}
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             {categories.map((category, index) => (
-              <Card key={index} className="p-6 hover-lift">
-                <h3 className="text-xl font-semibold mb-2">{category.title}</h3>
-                <p className="text-muted-foreground mb-4">{category.description}</p>
+              <Card key={index} className="p-6 hover-lift border-none shadow-sm bg-card">
+                <h3 className="text-xl font-bold mb-2 text-primary">{category.title}</h3>
+                <p className="text-muted-foreground mb-4 text-sm">{category.description}</p>
                 <div className="flex flex-wrap gap-2">
                   {category.techs.map((tech) => (
                     <span
                       key={tech}
-                      className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium"
+                      className="px-2.5 py-0.5 bg-primary/10 text-primary rounded-md text-xs font-medium"
                     >
                       {tech}
                     </span>
@@ -106,19 +104,20 @@ const Skills = () => {
           </div>
 
           {/* Skills Progress */}
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6">
             {skills.map((skill, index) => (
-              <Card key={index} className="p-6 hover-lift">
-                <div className="flex items-center justify-between mb-4">
+              <Card key={index} className="p-5 hover-lift border-none shadow-sm bg-card/50">
+                <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center space-x-3">
-                    <span className="text-2xl">{skill.icon}</span>
-                    <h3 className="font-semibold text-lg">{skill.name}</h3>
+                    {/* បង្ហាញ Icon */}
+                    <span>{skill.icon}</span>
+                    <h3 className="font-semibold text-base">{skill.name}</h3>
                   </div>
-                  <span className="text-sm font-medium text-muted-foreground">
+                  <span className="text-xs font-bold text-primary">
                     {skill.level}%
                   </span>
                 </div>
-                <Progress value={skill.level} className="h-3" />
+                <Progress value={skill.level} className="h-2" />
               </Card>
             ))}
           </div>

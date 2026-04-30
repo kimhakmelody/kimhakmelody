@@ -10,15 +10,15 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-center md:text-left flex items-center justify-center md:justify-start gap-2">
               <p className="text-muted-foreground flex items-center gap-1.5">
-                การរក្សាសិទ្ធិ © {currentYear} ដោយ
-                {/* ត្រង់នេះ៖ ប្រើ <img> ដើម្បីបង្ហាញទង់ជាតិឱ្យចេញជារូប */}
                 <img 
                   src="https://flagcdn.com/kh.svg" 
                   alt="Cambodia Flag" 
                   className="w-5 h-auto inline-block rounded-sm shadow-sm"
                   style={{ position: 'relative', top: '-1px' }} // តម្រង់ឱ្យស្មើអក្សរ
-                /> 
-                គឹម ហាក់។ រក្សាសិទ្ធិគ្រប់យ៉ាង។
+                /> រក្សាសិទ្ធិ © {currentYear} ដោយ
+                {/* ត្រង់នេះ៖ ប្រើ <img> ដើម្បីបង្ហាញទង់ជាតិឱ្យចេញជារូប */}
+                
+                គឹម ហាក់ រក្សាសិទ្ធិគ្រប់យ៉ាង។
               </p>
             </div>
 

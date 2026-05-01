@@ -1,126 +1,37 @@
-import { useEffect, useRef } from 'react';
+import { useTheme } from '../contexts/ThemeContext';
 import { Card } from './ui/card';
 import { Button } from './ui/button';
 
 const Projects = () => {
-  const projectsRef = useRef<HTMLDivElement>(null);
+  const { language } = useTheme();
 
-  const projects = [
-    {
-      title: 'គេហទំព័រពាណិជ្ជកម្ម E-Commerce',
-      description: 'គេហទំព័រពាណិជ្ជកម្មអេឡិចត្រូនិកដែលបង្កើតជាមួយ React, TypeScript និង Tailwind CSS។ មានមុខងារទាំងអស់ដូចជាកន្លែងដាក់របស់, ការទូទាត់, និងគ្រប់គ្រងអ្នកប្រើប្រាស់។',
-      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500',
-      tags: ['React', 'TypeScript', 'Tailwind', 'Node.js'],
-      liveUrl: '#',
-      githubUrl: '#'
-    },
-    {
-      title: 'កម្មវិធីគ្រប់គ្រងកិច្ចការ (Task Management)',
-      description: 'កម្មវិធីគ្រប់គ្រងកិច្ចការដ៏ទំនើបដែលជួយក្រុមការងារធ្វើការយ៉ាងមានប្រសិទ្ធភាព។ មានលក្ខណៈពិសេសជាច្រើនដូចជាការតាមដាន, ការជូនដំណឹង, និងរបាយការណ៍។',
-      image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=500',
-      tags: ['Next.js', 'PostgreSQL', 'Prisma', 'Tailwind'],
-      liveUrl: '#',
-      githubUrl: '#'
-    },
-    {
-      title: 'ប្រព័ន្ធគ្រប់គ្រងពុម្ពផ្សាយ CMS',
-      description: 'ប្រព័ន្ធគ្រប់គ្រងពុម្ពផ្សាយដែលងាយស្រួលប្រើប្រាស់សម្រាប់អ្នកសរសេរ និងអ្នកនិពន្ធ។ មានមុខងារបង្កើត, កែសម្រួល និងផ្សព្វផ្សាយអត្ថបទ។',
-      image: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=500',
-      tags: ['React', 'Node.js', 'MongoDB', 'Express'],
-      liveUrl: '#',
-      githubUrl: '#'
-    },
-    {
-      title: 'កម្មវិធីចល័ត React Native',
-      description: 'កម្មវិធីទូរស័ព្ទចល័តសម្រាប់ការរៀបចំកាលវិភាគ និងការរំលឹក។ មានមុខងារ push notification, calendar integration និង task management។',
-      image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=500',
-      tags: ['React Native', 'Firebase', 'Redux'],
-      liveUrl: '#',
-      githubUrl: '#'
-    }
-  ];
+  const content = {
+    km: { title: 'គម្រោងរបស់ខ្ញុំ', view: 'មើលគម្រោង', source: 'កូដប្រភព', p1_t: 'គេហទំព័រ E-Commerce', p1_d: 'ប្រព័ន្ធលក់ទំនិញអនឡាញពេញលេញ' },
+    en: { title: 'My Projects', view: 'Live Demo', source: 'Source Code', p1_t: 'E-Commerce Website', p1_d: 'Full online shopping system' },
+    zh: { title: '我的项目', view: '查看演示', source: '源码', p1_t: '电子商务网站', p1_d: '完整的在线购物系统' },
+    ko: { title: '나의 프로젝트', view: '라이브 데모', source: '소스 코드', p1_t: '이커머스 웹사이트', p1_d: '완전한 온라인 쇼핑 시스템' },
+    ja: { title: '私のプロジェクト', view: 'ライブデモ', source: 'ソースコード', p1_t: 'ECサイト', p1_d: '完全なオンラインショッピングシステム' }
+  };
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-fade-in');
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    if (projectsRef.current) {
-      observer.observe(projectsRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
+  const cur = content[language] || content.en;
 
   return (
     <section id="projects" className="py-20 bg-muted/30">
-      <div className="container mx-auto px-4">
-        <div ref={projectsRef} className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient">
-              គម្រោងរបស់ខ្ញុំ
-            </h2>
-            <div className="w-24 h-1 bg-primary mx-auto mb-6"></div>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-              គម្រោងខ្លះដែលខ្ញុំបានអភិវឌ្ឍន៍ និងបង្ហាញឱ្យឃើញពីជំនាញ និងបទពិសោធន៍របស់ខ្ញុំ
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {projects.map((project, index) => (
-              <Card key={index} className="overflow-hidden hover-lift group border-none shadow-md bg-card">
-                <div className="relative overflow-hidden h-52">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300"></div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">{project.title}</h3>
-                  <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
-                    {project.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-2.5 py-0.5 bg-secondary text-secondary-foreground rounded-md text-xs font-medium"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="flex space-x-3">
-                    <Button
-                      variant="default"
-                      size="sm"
-                      className="flex-1 bg-primary hover:bg-primary/90"
-                      onClick={() => window.open(project.liveUrl, '_blank', 'noopener,noreferrer')}
-                    >
-                      មើលគម្រោង
-                    </Button>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="flex-1"
-                      onClick={() => window.open(project.githubUrl, '_blank', 'noopener,noreferrer')}
-                    >
-                      កូដប្រភព
-                    </Button>
-                  </div>
-                </div>
-              </Card>
-            ))}
-          </div>
+      <div className="container mx-auto px-4 text-center">
+        <h2 className="text-4xl font-bold mb-16 text-gradient">{cur.title}</h2>
+        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto text-left">
+          <Card className="overflow-hidden group">
+            <div className="h-48 bg-slate-200"></div>
+            <div className="p-6">
+              <h3 className="text-xl font-bold mb-2">{cur.p1_t}</h3>
+              <p className="text-muted-foreground mb-4 text-sm">{cur.p1_d}</p>
+              <div className="flex gap-3">
+                <Button className="flex-1" size="sm">{cur.view}</Button>
+                <Button variant="outline" className="flex-1" size="sm">{cur.source}</Button>
+              </div>
+            </div>
+          </Card>
+          {/* ប្អូនអាចថែម Card ផ្សេងទៀតតាមគំរូនេះ */}
         </div>
       </div>
     </section>

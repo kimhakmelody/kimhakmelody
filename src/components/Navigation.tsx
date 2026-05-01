@@ -56,8 +56,9 @@ const Navigation = () => {
           className="flex items-center gap-2 text-2xl font-bold text-gradient cursor-pointer"
           onClick={() => scrollToSection('#home')}
         >
-          Kim Hak
-          <img src="https://flagcdn.com/kh.svg" alt="KH" className="w-7 h-auto rounded-sm" />
+<img src="https://flagcdn.com/kh.svg" alt="KH" className="w-7 h-auto rounded-sm" />
+          Heng Kim Hak
+          
         </div>
 
         {/* Desktop Menu - ផ្លូវកាត់ */}

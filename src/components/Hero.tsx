@@ -5,7 +5,7 @@ import { ArrowRight, Download } from 'lucide-react';
 const Hero = () => {
   const { language } = useTheme();
   const cur = {
-    km: { name: 'ហ៊េង គឹមហាក់', title: 'អ្នកអភិវឌ្ឍន៍គេហទំព័រ & អ្នកសរសេរកម្មវិធី', tag: 'កសាងអនាគតជាមួយកូដ និងបង្កើតដំណោះស្រាយប្រកបដោយភាពច្នៃប្រឌិត', btn1: 'ស្វែងយល់បន្ថែម', btn2: 'ទាញយក CV' },
+    km: { name: 'ហេង គឹមហាក់', title: 'អ្នកអភិវឌ្ឍន៍គេហទំព័រ & អ្នកសរសេរកម្មវិធី', tag: 'កសាងអនាគតជាមួយកូដ និងបង្កើតដំណោះស្រាយប្រកបដោយភាពច្នៃប្រឌិត', btn1: 'ស្វែងយល់បន្ថែម', btn2: 'ទាញយក CV' },
     en: { name: 'Heng Kim Hak', title: 'Web Developer & Programmer', tag: 'Building the future with code and creating innovative solutions', btn1: 'Explore More', btn2: 'Download CV' },
     zh: { name: 'Heng Kim Hak', title: '网页开发人员与程序员', tag: '用代码构建未来，创造创新的解决方案', btn1: '了解更多', btn2: '下载简历' },
     ko: { name: 'Heng Kim Hak', title: '웹 개발자 및 프로그래머', tag: '코드로 미래를 구축하고 혁신적인 솔루션을 창출합니다', btn1: '더 알아보기', btn2: '이력서 다운로드' },

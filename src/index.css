@@ -1,30 +1,28 @@
-/* Custom CSS សម្រាប់ឱ្យដូច Template ដើម */
-.text-gradient {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-600;
+@keyframes slide-show {
+  0%, 11% { background-image: url('/product 1.jpg'); }
+  12%, 22% { background-image: url('/product 2.jpg'); }
+  23%, 33% { background-image: url('/product 3.jpg'); }
+  34%, 44% { background-image: url('/product 4.jpg'); }
+  45%, 55% { background-image: url('/product 5.jpg'); }
+  56%, 66% { background-image: url('/product 6.jpg'); }
+  67%, 77% { background-image: url('/product 7.jpg'); }
+  78%, 88% { background-image: url('/product 8.jpg'); }
+  89%, 100% { background-image: url('/product 9.jpg'); }
 }
 
-/* Keyframes Slider ជាមួយរូបភាពទាំង ៥ */
-@keyframes modern-slider {
-  0%, 100% { background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1000'); } /* រូបទី ១ */
-  20% { background-image: url('https://images.unsplash.com/photo-1504639725590-34d0984388bd?q=80&w=1000'); } /* រូបទី ២ */
-  40% { background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000'); } /* រូបទី ៣ */
-  60% { background-image: url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1000'); } /* រូបទី ៤ */
-  80% { background-image: url('https://images.unsplash.com/photo-1587620962725-abab7fe55159?q=80&w=1000'); } /* រូបទី ៥ */
-}
-
-/* Class សម្រាប់ Slider */
 .animate-slider {
-  animation: modern-slider 15s linear infinite;
+  animation: slide-show 25s infinite; /* បន្ថែមរយៈពេលឱ្យយូរដើម្បីមើលរូបទាន់ */
   background-size: cover;
   background-position: center;
-  /* កែខ្នាតឱ្យសមសួនដូច Template ដើម */
-  height: 350px; 
-  transition: background-image 1s ease-in-out;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 450px; /* កំណត់កម្ពស់ជាក់លាក់ដើម្បីកុំឱ្យចេញពណ៌ស */
+  border-radius: 1.5rem;
+  transition: all 0.5s ease-in-out;
 }
 
-/* សម្រាប់ទូរស័ព្ទឱ្យខ្នាតតូចល្មម */
 @media (max-width: 768px) {
   .animate-slider {
-    height: 250px; 
+    height: 300px; /* ខ្នាតសម្រាប់ទូរស័ព្ទ */
   }
 }

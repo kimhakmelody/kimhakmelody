@@ -1,37 +1,76 @@
 import { useTheme } from '../contexts/ThemeContext';
 import { Card } from './ui/card';
 import { Button } from './ui/button';
+import { ExternalLink, Github } from 'lucide-react';
 
 const Projects = () => {
   const { language } = useTheme();
 
   const content = {
-    km: { title: 'គម្រោងរបស់ខ្ញុំ', view: 'មើលគម្រោង', source: 'កូដប្រភព', p1_t: 'គេហទំព័រ E-Commerce', p1_d: 'ប្រព័ន្ធលក់ទំនិញអនឡាញពេញលេញ' },
-    en: { title: 'My Projects', view: 'Live Demo', source: 'Source Code', p1_t: 'E-Commerce Website', p1_d: 'Full online shopping system' },
-    zh: { title: '我的项目', view: '查看演示', source: '源码', p1_t: '电子商务网站', p1_d: '完整的在线购物系统' },
-    ko: { title: '나의 프로젝트', view: '라이브 데모', source: '소스 코드', p1_t: '이커머스 웹사이트', p1_d: '완전한 온라인 쇼핑 시스템' },
-    ja: { title: '私のプロジェクト', view: 'ライブデモ', source: 'ソースコード', p1_t: 'ECサイト', p1_d: '完全なオンラインショッピングシステム' }
+    km: { title: 'គម្រោងថ្មីៗ', subtitle: 'ស្នាដៃមួយចំនួនដែលខ្ញុំបានបង្កើត', view: 'មើលផ្ទាល់', code: 'កូដប្រភព' },
+    en: { title: 'Recent Projects', subtitle: 'Some of the works I have created', view: 'Live Demo', code: 'Source Code' },
+    zh: { title: '近期项目', subtitle: '我创建的一些作品', view: '查看演示', code: '源码' },
+    ko: { title: '최근 프로젝트', subtitle: '내가 만든 몇 가지 작품들', view: '라이브 데모', code: '소스 코드' },
+    ja: { title: '最近のプロジェクト', subtitle: '私が作成したいくつかの作品', view: 'ライブデモ', code: 'ソースコード' }
   };
 
   const cur = content[language] || content.en;
 
+  const projects = [
+    {
+      title: "E-Commerce Platform",
+      desc: "A full-featured online store built with React and Tailwind CSS.",
+      img: "https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&q=80",
+      tags: ["React", "TypeScript", "Tailwind"]
+    },
+    {
+      title: "Portfolio Website",
+      desc: "Multilingual personal portfolio with smooth animations.",
+      img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80",
+      tags: ["UI/UX", "Frontend", "Vite"]
+    }
+  ];
+
   return (
-    <section id="projects" className="py-20 bg-muted/30">
-      <div className="container mx-auto px-4 text-center">
-        <h2 className="text-4xl font-bold mb-16 text-gradient">{cur.title}</h2>
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto text-left">
-          <Card className="overflow-hidden group">
-            <div className="h-48 bg-slate-200"></div>
-            <div className="p-6">
-              <h3 className="text-xl font-bold mb-2">{cur.p1_t}</h3>
-              <p className="text-muted-foreground mb-4 text-sm">{cur.p1_d}</p>
-              <div className="flex gap-3">
-                <Button className="flex-1" size="sm">{cur.view}</Button>
-                <Button variant="outline" className="flex-1" size="sm">{cur.source}</Button>
+    <section id="projects" className="py-32 bg-muted/20">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-20">
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-gradient">{cur.title}</h2>
+          <p className="text-xl text-muted-foreground">{cur.subtitle}</p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
+          {projects.map((project, i) => (
+            <Card key={i} className="overflow-hidden group border-none shadow-2xl bg-card/80 backdrop-blur">
+              <div className="relative h-64 overflow-hidden">
+                <img 
+                  src={project.img} 
+                  alt={project.title} 
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
-            </div>
-          </Card>
-          {/* ប្អូនអាចថែម Card ផ្សេងទៀតតាមគំរូនេះ */}
+              <div className="p-8">
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.tags.map(tag => (
+                    <span key={tag} className="px-3 py-1 bg-secondary text-secondary-foreground rounded-full text-xs font-bold uppercase tracking-wider">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <h3 className="text-2xl font-bold mb-3">{project.title}</h3>
+                <p className="text-muted-foreground mb-8 text-lg">{project.desc}</p>
+                <div className="flex gap-4">
+                  <Button className="flex-1 h-12 text-md font-bold rounded-xl shadow-lg">
+                    <ExternalLink className="w-4 h-4 mr-2" /> {cur.view}
+                  </Button>
+                  <Button variant="outline" className="flex-1 h-12 text-md font-bold rounded-xl border-2 hover:bg-secondary">
+                    <Github className="w-4 h-4 mr-2" /> {cur.code}
+                  </Button>
+                </div>
+              </div>
+            </Card>
+          ))}
         </div>
       </div>
     </section>

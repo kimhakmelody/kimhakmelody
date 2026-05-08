@@ -1,23 +1,15 @@
-@keyframes hero-slider {
-  0%, 100% { background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1000'); }
-  33% { background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000'); }
-  66% { background-image: url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1000'); }
+/* ប្រើប្រាស់ Keyframes ដូចក្នុងវីដេអូ */
+@keyframes slider {
+  0% { background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1000'); }
+  25% { background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000'); }
+  50% { background-image: url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1000'); }
+  75% { background-image: url('https://images.unsplash.com/photo-1504639725590-34d0984388bd?q=80&w=1000'); }
+  100% { background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1000'); }
 }
 
-.animate-hero-slider {
-  animation: hero-slider 12s infinite;
+.animate-slider {
+  animation: slider 15s linear infinite;
   background-size: cover;
   background-position: center;
-  /* កែខ្នាតឱ្យសមសួន */
-  height: 400px; 
-}
-
-@media (max-width: 768px) {
-  .animate-hero-slider {
-    height: 250px; /* សម្រាប់ទូរស័ព្ទឱ្យតូចសមសួន */
-  }
-}
-
-.text-gradient {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-600;
+  transition: background-image 1s ease-in-out;
 }

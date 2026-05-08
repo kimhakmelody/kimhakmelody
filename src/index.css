@@ -1,28 +1,31 @@
+/* បង្កើត Animation សម្រាប់រូបភាពទាំង ៩ សន្លឹក */
 @keyframes slide-show {
-  0%, 11% { background-image: url('/product 1.jpg'); }
-  12%, 22% { background-image: url('/product 2.jpg'); }
-  23%, 33% { background-image: url('/product 3.jpg'); }
-  34%, 44% { background-image: url('/product 4.jpg'); }
-  45%, 55% { background-image: url('/product 5.jpg'); }
-  56%, 66% { background-image: url('/product 6.jpg'); }
-  67%, 77% { background-image: url('/product 7.jpg'); }
-  78%, 88% { background-image: url('/product 8.jpg'); }
-  89%, 100% { background-image: url('/product 9.jpg'); }
+  0%, 10% { background-image: url('/product-1.jpg'); }
+  11%, 21% { background-image: url('/product-2.jpg'); }
+  22%, 32% { background-image: url('/product-3.jpg'); }
+  33%, 43% { background-image: url('/product-4.jpg'); }
+  44%, 54% { background-image: url('/product-5.jpg'); }
+  55%, 65% { background-image: url('/product-6.jpg'); }
+  66%, 76% { background-image: url('/product-7.jpg'); }
+  77%, 87% { background-image: url('/product-8.jpg'); }
+  88%, 100% { background-image: url('/product-9.jpg'); }
 }
 
 .animate-slider {
-  animation: slide-show 25s infinite; /* បន្ថែមរយៈពេលឱ្យយូរដើម្បីមើលរូបទាន់ */
+  animation: slide-show 30s infinite;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  /* កំណត់ខ្នាតឱ្យសមសួនដូច Template ដើម */
   width: 100%;
-  height: 450px; /* កំណត់កម្ពស់ជាក់លាក់ដើម្បីកុំឱ្យចេញពណ៌ស */
+  aspect-ratio: 16 / 9; /* រក្សារាងចតុកោណកែងស្អាត */
+  max-height: 450px;
   border-radius: 1.5rem;
-  transition: all 0.5s ease-in-out;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
 }
 
 @media (max-width: 768px) {
   .animate-slider {
-    height: 300px; /* ខ្នាតសម្រាប់ទូរស័ព្ទ */
+    max-height: 250px; /* ខ្នាតតូចសម្រាប់ទូរស័ព្ទ */
   }
 }

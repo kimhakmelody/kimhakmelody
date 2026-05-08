@@ -17,16 +17,16 @@
   background-position: center;
   background-repeat: no-repeat;
   width: 100%;
-  /* នេះជាខ្នាតដែលធ្វើឱ្យរូបភាពមិនរីកធំពេក */
-  aspect-ratio: 16 / 9; 
-  max-height: 400px;
+  aspect-ratio: 16 / 9; /* រក្សារាងចតុកោណកែងស្អាត មិនឱ្យរីកធំពេញអេក្រង់ */
+  max-width: 500px; /* កំណត់ទំហំអតិបរមាឱ្យសមសួន */
+  margin: 0 auto;
   border-radius: 20px;
-  border: 4px solid white;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  border: 5px solid white;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
 
 @media (max-width: 768px) {
   .animate-slider {
-    max-height: 250px;
+    max-width: 100%; /* លើទូរស័ព្ទឱ្យវាពេញទទឹងអេក្រង់ */
   }
 }

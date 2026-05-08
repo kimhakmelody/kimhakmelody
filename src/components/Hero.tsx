@@ -10,13 +10,13 @@ const Hero = () => {
   }[language] || { name: 'Heng Kim Hak' };
 
   return (
-    <section id="home" className="py-10 md:py-20 flex items-center overflow-hidden bg-background">
+    <section id="home" className="py-10 md:py-20 overflow-hidden bg-background">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col lg:flex-row items-center gap-10">
+        <div className="flex flex-col lg:flex-row items-center gap-12">
           
-          {/* ផ្នែកអត្ថបទ - មិនឱ្យរីកធំពេក */}
-          <div className="w-full lg:w-1/2 space-y-6 text-center lg:text-left">
-            <h1 className="text-5xl md:text-7xl font-black tracking-tighter">
+          {/* ផ្នែកអត្ថបទ */}
+          <div className="w-full lg:w-1/2 text-center lg:text-left space-y-6">
+            <h1 className="text-5xl md:text-6xl font-black tracking-tight">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-600">
                 {cur.name}
               </span>
@@ -31,12 +31,9 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* ផ្នែក Slider - កំណត់ទំហំឱ្យសមល្មម (Fix បញ្ហារូបរីកធំ) */}
-          <div className="w-full lg:w-1/2 max-w-[550px] mx-auto">
-            <div className="relative group p-2">
-              <div className="absolute -inset-1 bg-gradient-to-r from-primary to-blue-500 rounded-[25px] blur opacity-20 transition duration-1000"></div>
-              <div className="animate-slider relative z-10" />
-            </div>
+          {/* ផ្នែក Slider (រូបភាព ៩ សន្លឹក) */}
+          <div className="w-full lg:w-1/2">
+             <div className="animate-slider" />
           </div>
 
         </div>
